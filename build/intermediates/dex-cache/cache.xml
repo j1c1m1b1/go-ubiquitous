@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9224bc4c54ba95147c7eabd874573763c07cb6be">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/pre-dexed/debug/classes-b6b3b836d08ed6db2d1971b85511aa3fd0a304e8.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-469a11cf862841e048669f644f362aa9fb440f31.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/pre-dexed/debug/classes-b89e783fbd14bb7a7747d736b38727579a8f9136.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/pre-dexed/debug/classes-da3f110c79f70e19284e850c6962f1e32a851540.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/wear/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/wear/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-b9798aba154a25ce1b214f7110d174eade4d8d66.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/exploded-aar/com.android.support/gridlayout-v7/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4c72b7305d9c42d7729d66694dc984f69896a844">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/pre-dexed/debug/classes-8aa83a4cade8d07616e0658abfb77519e86889cc.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/wear/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c6d79137693d494dee16372d3921f919eb724ced">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/wear/build/intermediates/pre-dexed/debug/classes-900c5f88e627c383f97bfad2f6af766d5f7f84fb.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-9e6eb4de2288476f1a537157e789576c6619fa30.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/wear/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/wear/build/intermediates/pre-dexed/debug/classes-f94465f7ce8d558f0a71fbaf8d2d8929753d0aea.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.5.2/ecf534dba3a8446ce84cbb797d314763be212a68/glide-3.5.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ecf534dba3a8446ce84cbb797d314763be212a68">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/pre-dexed/debug/glide-3.5.2-a860dc80781a8c7c3cf7a6c2d659f5bcb86b7ed2.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="97f7e239e86ef994de894818fdd8a71d2e89d6aa">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/pre-dexed/debug/classes-39c2524706ee202e49c67c2100b08283eff38527.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/wear/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.1.0/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="82825756edeeb3b56b15e73b2edd56e93da5a444">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/wear/build/intermediates/pre-dexed/debug/classes-851a3bdebd53854936a49edad3e084b44cb45063.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/pre-dexed/debug/classes-6a5ae1b136cb130ff5b5484942e19d8e5f0c7885.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/wear/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-9e6eb4de2288476f1a537157e789576c6619fa30.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/wear/build/intermediates/exploded-aar/com.google.android.support/wearable/1.3.0/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="58b928ccbaf9090c632f278d6bd31e1ae42f2457">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/wear/build/intermediates/pre-dexed/debug/classes-e98d192272fee3d93e8a887991ff6172c135c727.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/.gradle/caches/modules-2/files-2.1/com.google.android.apps.muzei/muzei-api/2.0/ea86be2a201e6ad86dacffe774dbc6d89fcb0c92/muzei-api-2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ea86be2a201e6ad86dacffe774dbc6d89fcb0c92">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/pre-dexed/debug/muzei-api-2.0-82f4e76b3c52c7e6a9ed79333ff29c162ef71749.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/pre-dexed/debug/classes-a6fdc320b4b74547b5e784141ab2a33d7acd132e.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/wear/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/8.1.0/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="97f3b099801a9ad9d70e835b9125273e986eb68d">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/wear/build/intermediates/pre-dexed/debug/classes-dbc68dc2b9932906cd9329cfa477ae24eb06eb37.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/app/build/intermediates/pre-dexed/debug/classes-f274ff2d611f2651e0bbc8486891a7edbd93f7c0.jar" />
+    </item>
+    <item
+        jar="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/wear/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/julmendo/Documents/Repositories/Private/Go Ubiquitous/wear/build/intermediates/pre-dexed/debug/classes-a562bb141736b9f716f724bb136e0630442eb1d4.jar" />
+    </item>
+
+</items>
