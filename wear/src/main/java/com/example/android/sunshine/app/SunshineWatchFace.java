@@ -41,7 +41,10 @@ import android.view.WindowInsets;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.DataApi;
+import com.google.android.gms.wearable.DataEvent;
 import com.google.android.gms.wearable.DataEventBuffer;
+import com.google.android.gms.wearable.DataMap;
+import com.google.android.gms.wearable.DataMapItem;
 import com.google.android.gms.wearable.Wearable;
 
 import java.lang.ref.WeakReference;
@@ -64,7 +67,7 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
     private static final Typeface BOLD_TYPEFACE =
             Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD);
 
-    private static final String WEAR_PATH = "/weather_info";
+    private static final String WEAR_PATH = "/weather_info/wear";
 
     private static final String LOW_TEMP = "low";
     private static final String HIGH_TEMP = "high";
@@ -128,8 +131,13 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
         float dateYOffset;
         float weatherYOffset;
         float bitmapXOffset;
+        float bitmapYOffset;
         float highXOffset;
         float lowXOffset;
+        int bitmapSize;
+
+
+
         GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(SunshineWatchFace.this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -150,8 +158,8 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
                 date.setTime(System.currentTimeMillis());
             }
         };
-        private double low;
-        private double high;
+        private int low;
+        private int high;
         private byte[] bitmapBytes;
 
         @Override
@@ -174,8 +182,23 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
 
         @Override
         public void onDataChanged(DataEventBuffer dataEventBuffer) {
+            for(DataEvent dataEvent : dataEventBuffer)
+            {
+                if(dataEvent.getType() == DataEvent.TYPE_CHANGED)
+                {
+                    DataMap dataMap =
+                            DataMapItem.fromDataItem(dataEvent.getDataItem()).getDataMap();
+                    String path = dataEvent.getDataItem().getUri().getPath();
+                    if(path.equals(WEAR_PATH))
+                    {
+                        low = (int) dataMap.getDouble(LOW_TEMP);
+                        high = (int) dataMap.getDouble(HIGH_TEMP);
+                        bitmapBytes = dataMap.getByteArray(IMAGE);
 
-
+                        break;
+                    }
+                }
+            }
         }
 
         @Override
@@ -193,8 +216,10 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
             dateYOffset = resources.getDimension(R.dimen.date_y_offset);
             weatherYOffset = resources.getDimension(R.dimen.weather_y_offset);
             bitmapXOffset = resources.getDimension(R.dimen.bitmap_x_offset);
+            bitmapYOffset = resources.getDimension(R.dimen.bitmap_y_offset);
             highXOffset = resources.getDimension(R.dimen.high_x_offset);
             lowXOffset = resources.getDimension(R.dimen.low_x_offset);
+            bitmapSize = resources.getDimensionPixelSize(R.dimen.bitmap_size);
 
             mBackgroundPaint = new Paint();
             mBackgroundPaint.setColor(getResources().getColor(R.color.background));
@@ -371,11 +396,14 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
                     Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapBytes, 0,
                             bitmapBytes.length);
 
-                    canvas.drawBitmap(bitmap, bitmapXOffset, weatherYOffset, mBitmapPaint);
+                    Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, bitmapSize,
+                            bitmapSize, false);
 
-                    canvas.drawText("" + high, highXOffset, weatherYOffset, mHighTextPaint);
+                    canvas.drawBitmap(scaledBitmap, bitmapXOffset, bitmapYOffset, mBitmapPaint);
 
-                    canvas.drawText("" + low, lowXOffset, weatherYOffset, mLowTextPaint);
+                    canvas.drawText(high + "º", highXOffset, weatherYOffset, mHighTextPaint);
+
+                    canvas.drawText(low + "º", lowXOffset, weatherYOffset, mLowTextPaint);
                 }
             }
 

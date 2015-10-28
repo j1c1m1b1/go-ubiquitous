@@ -78,6 +78,7 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter implements 
     private static final String LOW_TEMP = "low";
     private static final String HIGH_TEMP = "high";
     private static final String IMAGE = "image";
+    private static final String TIMESTAMP = "timestamp";
     private static final long DAY_IN_MILLIS = 1000 * 60 * 60 * 24;
     private static final int WEATHER_NOTIFICATION_ID = 3004;
     private static final String[] NOTIFY_WEATHER_PROJECTION = new String[] {
@@ -555,6 +556,7 @@ public class SunshineSyncAdapter extends AbstractThreadedSyncAdapter implements 
                 PutDataMapRequest putDataMapRequest = PutDataMapRequest.create(WEAR_PATH);
                 putDataMapRequest.getDataMap().putDouble(LOW_TEMP, low);
                 putDataMapRequest.getDataMap().putDouble(HIGH_TEMP, high);
+                putDataMapRequest.getDataMap().putLong(TIMESTAMP, System.currentTimeMillis());
 
                 if(largeIcon != null)
                 {
