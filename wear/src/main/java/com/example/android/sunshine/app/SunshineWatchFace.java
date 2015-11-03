@@ -84,6 +84,10 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
      */
     private static final int MSG_UPDATE_TIME = 0;
 
+    private static final int MSG_LOAD_WEATHER = 1;
+
+    private static final long DELAY = 1800000;
+
     @Override
     public Engine onCreateEngine() {
         return new Engine();
@@ -109,6 +113,32 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
         }
     }
 
+    private static class LoadWeatherHandler extends Handler
+    {
+        private final WeakReference<SunshineWatchFace.Engine> weakReference;
+
+        public LoadWeatherHandler(SunshineWatchFace.Engine reference)
+        {
+            weakReference = new WeakReference<>(reference);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            SunshineWatchFace.Engine engine = weakReference.get();
+            if(engine != null)
+            {
+                switch (msg.what)
+                {
+                    case MSG_LOAD_WEATHER:
+                        engine.handleLoadWeather();
+                        break;
+                }
+            }
+        }
+
+
+    }
+
     @SuppressWarnings("deprecation")
     private class Engine extends CanvasWatchFaceService.Engine
             implements GoogleApiClient.ConnectionCallbacks,
@@ -117,6 +147,7 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
 
 
         final Handler mUpdateTimeHandler = new EngineHandler(this);
+        final Handler loadWeatherHandler = new LoadWeatherHandler(this);
         boolean mRegisteredTimeZoneReceiver = false;
         Paint mBackgroundPaint;
         Paint mTextPaint;
@@ -134,9 +165,8 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
         float bitmapYOffset;
         float highXOffset;
         float lowXOffset;
+
         int bitmapSize;
-
-
 
         GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(SunshineWatchFace.this)
                 .addConnectionCallbacks(this)
@@ -250,6 +280,7 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
         @Override
         public void onDestroy() {
             mUpdateTimeHandler.removeMessages(MSG_UPDATE_TIME);
+            loadWeatherHandler.removeMessages(MSG_LOAD_WEATHER);
             super.onDestroy();
         }
 
@@ -290,6 +321,7 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
                 mTime.clear(TimeZone.getDefault().getID());
                 mTime.setToNow();
                 date.setTime(System.currentTimeMillis());
+                loadWeatherHandler.sendEmptyMessage(MSG_LOAD_WEATHER);
             } else {
 
                 unregisterReceiver();
@@ -298,6 +330,7 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
                     Wearable.DataApi.removeListener(mGoogleApiClient, this);
                     mGoogleApiClient.disconnect();
                 }
+                loadWeatherHandler.removeMessages(MSG_LOAD_WEATHER);
             }
 
             // Whether the timer should be running depends on whether we're visible (as well as
@@ -439,6 +472,13 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
                         - (timeMs % INTERACTIVE_UPDATE_RATE_MS);
                 mUpdateTimeHandler.sendEmptyMessageDelayed(MSG_UPDATE_TIME, delayMs);
             }
+        }
+
+        public void handleLoadWeather() {
+            Log.d(this.getClass().getSimpleName(), "Handle Load Weather");
+            Intent intent = new Intent(getApplicationContext(), LoadWeatherService.class);
+            startService(intent);
+            loadWeatherHandler.sendEmptyMessageDelayed(MSG_LOAD_WEATHER, DELAY);
         }
     }
 }
