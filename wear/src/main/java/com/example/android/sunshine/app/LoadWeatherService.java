@@ -2,6 +2,7 @@ package com.example.android.sunshine.app;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
@@ -30,16 +31,20 @@ public class LoadWeatherService extends Service implements GoogleApiClient.Conne
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.d(this.getClass().getSimpleName(), "Handle Load Weather");
         apiClient = new GoogleApiClient.Builder(getApplicationContext())
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(Wearable.API)
                 .build();
+
+        apiClient.connect();
     }
 
     @Override
     public void onConnected(Bundle bundle) {
         Log.d(this.getClass().getSimpleName(), "Connected");
+        sendRequestWeatherMessage();
     }
 
     @Override
@@ -58,38 +63,10 @@ public class LoadWeatherService extends Service implements GoogleApiClient.Conne
         return null;
     }
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        sendRequestWeatherMessage();
-        return super.onStartCommand(intent, flags, startId);
-    }
-
-
     private void sendRequestWeatherMessage()
     {
-        if(apiClient != null && apiClient.isConnected())
-        {
-            List<Node> connectedNodes =
-                    Wearable.NodeApi.getConnectedNodes(apiClient).await().getNodes();
-            Node node = null;
-            for(Node n: connectedNodes)
-            {
-                if(n.isNearby())
-                {
-                    node = n;
-                    break;
-                }
-            }
-
-            if(node != null)
-            {
-                DataMap config = new DataMap();
-                config.putString(ACK_MESSAGE_KEY, ACK_MESSAGE);
-                byte[] rawData = config.toByteArray();
-                Wearable.MessageApi.sendMessage(apiClient, node.getId(), ACK_PATH, rawData);
-                Log.d(this.getClass().getSimpleName(), "Message sent");
-            }
-        }
+        SendWeatherRequestTask task = new SendWeatherRequestTask();
+        task.execute(null, null);
     }
 
     @Override
@@ -98,6 +75,39 @@ public class LoadWeatherService extends Service implements GoogleApiClient.Conne
         if(apiClient!= null && apiClient.isConnected())
         {
             apiClient.disconnect();
+        }
+    }
+
+    private class SendWeatherRequestTask extends AsyncTask<Void, Void, Void>
+    {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            if(apiClient != null && apiClient.isConnected())
+            {
+                Log.d(this.getClass().getSimpleName(), "Handle Load Weather");
+                List<Node> connectedNodes =
+                        Wearable.NodeApi.getConnectedNodes(apiClient).await().getNodes();
+                Node node = null;
+                for(Node n: connectedNodes)
+                {
+                    if(n.isNearby())
+                    {
+                        node = n;
+                        break;
+                    }
+                }
+
+                if(node != null)
+                {
+                    DataMap config = new DataMap();
+                    config.putString(ACK_MESSAGE_KEY, ACK_MESSAGE);
+                    byte[] rawData = config.toByteArray();
+                    Wearable.MessageApi.sendMessage(apiClient, node.getId(), ACK_PATH, rawData);
+                    Log.d(this.getClass().getSimpleName(), "Message sent");
+                }
+            }
+            return null;
         }
     }
 }

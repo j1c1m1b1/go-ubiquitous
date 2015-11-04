@@ -475,7 +475,6 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
         }
 
         public void handleLoadWeather() {
-            Log.d(this.getClass().getSimpleName(), "Handle Load Weather");
             Intent intent = new Intent(getApplicationContext(), LoadWeatherService.class);
             startService(intent);
             loadWeatherHandler.sendEmptyMessageDelayed(MSG_LOAD_WEATHER, DELAY);
