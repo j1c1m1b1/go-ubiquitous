@@ -227,5 +227,5 @@
 
 
     <!--API KEY-->
-    <string name="api_key" translatable="false">1d998b9b5d33fa1e888c2c650486a6b3</string>
+    <string name="api_key" translatable="false">YOUR_API_KEY</string>
 </resources>
